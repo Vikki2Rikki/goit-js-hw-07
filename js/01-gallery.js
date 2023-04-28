@@ -29,7 +29,6 @@ function createGalleryItems(galleryItems){
 galleryContainer.insertAdjacentHTML('beforeend', galleryItemsMarcup);
 
 function onOpenOriginalImg(e){
-   // preventDefault(e);
    blockStandartAction(e);
 
    if(e.target.nodeName !== "IMG"){
@@ -40,8 +39,9 @@ function onOpenOriginalImg(e){
    `);
    instance.show();
 
-galleryContainer.addEventListener('keydown', onCloseOriginalImg);
+document.addEventListener('keydown', onCloseOriginalImg);
 function onCloseOriginalImg(e){
+   console.log(e.code);
    if(e.code === "Escape"){
       instance.close();
    }};
