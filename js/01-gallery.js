@@ -36,14 +36,18 @@ function onOpenOriginalImg(e){
    } else{
       const instance = basicLightbox.create(`
       <img src="${e.target.dataset.source}"  width="1280" height="853">
-   `);
+   `,
+   {onShow: (instance) => {window.addEventListener('keydown', onCloseOriginalImg)},
+   onClose: (instance) => {window.removeEventListener('keydown', onCloseOriginalImg)},}
+   );
    instance.show();
+   console.log(e);
 
 document.addEventListener('keydown', onCloseOriginalImg);
 function onCloseOriginalImg(e){
-   console.log(e.code);
    if(e.code === "Escape"){
       instance.close();
+      console.log(e);
    }};
    }
 }

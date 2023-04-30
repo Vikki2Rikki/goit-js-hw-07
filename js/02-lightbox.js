@@ -7,8 +7,6 @@ const galleryContainer = document.querySelector('.gallery');
 
 const galleryItemsMarcup = createGalleryItems(galleryItems);
 
-galleryContainer.addEventListener('click', onOpenOriginalImg);
-
 function createGalleryItems(galleryItems){
    return galleryItems.map(({ preview, original, description }) => {
       return `
@@ -24,16 +22,5 @@ function createGalleryItems(galleryItems){
 
 galleryContainer.insertAdjacentHTML('beforeend', galleryItemsMarcup);
 
-function onOpenOriginalImg(e){
-blockStandartAction(e);
-if(e.target.nodeName !== "IMG"){
-   return
-}else{
+
    var lightbox = new SimpleLightbox('.gallery__link', { captionsData: "alt", captionDelay: "250", enableKeyboard: "true" });
-}
-
-}
-
-function blockStandartAction(e){
-   e.preventDefault()
-}
